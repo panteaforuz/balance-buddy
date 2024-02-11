@@ -28,6 +28,4 @@ public class Account extends BaseEntity {
     @OneToMany(mappedBy = "account")
     private Set<UserAccount> userAccounts;
 
-//    @OneToMany(mappedBy = "account")
-//    private List<Transaction> transactions;
 }

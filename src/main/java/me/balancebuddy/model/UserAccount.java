@@ -1,11 +1,18 @@
 package me.balancebuddy.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import me.balancebuddy.base.BaseEntity;
 
-import java.util.List;
 
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
+@Setter
+@Getter
 @Table(name = "USER_ACCOUNTS")
 public class UserAccount extends BaseEntity {
 
@@ -14,11 +21,11 @@ public class UserAccount extends BaseEntity {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "USER_ID", nullable = false)
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
     @ManyToOne
-    @JoinColumn(name = "ACCOUNT_ID", nullable = false)
+    @JoinColumn(name = "account_id", nullable = false)
     private Account account;
 
 }

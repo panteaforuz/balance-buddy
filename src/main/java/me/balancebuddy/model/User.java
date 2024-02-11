@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import me.balancebuddy.base.BaseEntity;
 
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -15,29 +14,28 @@ import java.util.Set;
 @NoArgsConstructor
 @Setter
 @Getter
-@Table(schema = "USERS")
+@Table(name = "USERS")
 public class User extends BaseEntity {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "USERNAME", unique = true, nullable = false)
+    @Column(name = "username", unique = true, nullable = false)
     private String username;
 
-    @Column(name = "PASSWORD", nullable = false)
+    @Column(name = "password", nullable = false)
     private String password;
 
-    @Column(name = "FIRST_NAME")
+    @Column(name = "first_name")
     private String firstName;
 
-    @Column(name = "LAST_NAME")
+    @Column(name = "last_name")
     private String lastName;
 
-    @Column(name = "NATIONAL_ID", unique = true, nullable = false)
+    @Column(name = "national_id", unique = true, nullable = false)
     private String nationalId;
 
-    @Column(name = "PHONE_NUMBER", unique = true, nullable = false)
+    @Column(name = "phone_number", unique = true, nullable = false)
     private String phoneNumber;
 
     @OneToMany(mappedBy = "user")
