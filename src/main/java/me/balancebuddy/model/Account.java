@@ -6,10 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import me.balancebuddy.base.BaseEntity;
-
 import java.util.List;
-import java.util.Set;
-
 
 @Entity
 @NoArgsConstructor
