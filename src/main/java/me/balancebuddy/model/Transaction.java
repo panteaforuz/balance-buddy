@@ -11,6 +11,7 @@ import me.balancebuddy.model.enums.TransactionType;
 import me.balancebuddy.model.enums.TransmissionType;
 import org.hibernate.annotations.CompositeType;
 import javax.money.*;
+import java.util.Set;
 
 @Entity
 @NoArgsConstructor
@@ -24,16 +25,19 @@ public class Transaction extends BaseEntity {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "title")
-    private String title;
-
     @ManyToOne
-    @JoinColumn(name = "source_account_id")
+    @JoinColumn(name = "SOURSE_ACCOUNT_ID")
     private Account sourceAccount;
 
     @ManyToOne
-    @JoinColumn(name = "destination_account_id")
+    @JoinColumn(name = "DESTINATION_ACCOUNT_ID")
     private Account destinationAccount;
+
+    @Column(name = "ORIGIN_CARD_NUMBER")
+    private String originCardNumber;
+
+    @Column(name = "DESTINATION_CARD_NUMBER")
+    private String sourceCardNumber;
 
     @Enumerated(EnumType.STRING)
     private TransactionType transactionType;
@@ -42,13 +46,16 @@ public class Transaction extends BaseEntity {
     private TransmissionType transmissionType;
 
     @AttributeOverride(
-            name = "amount",
-            column = @Column(name = "price_amount")
+            name = "AMOUNT",
+            column = @Column(name = "PRICE_AMOUNT")
     )
     @AttributeOverride(
-            name = "currency",
-            column = @Column(name = "price_currency")
+            name = "CURRENCY",
+            column = @Column(name = "PRICE_CURRENCY")
     )
     @CompositeType(MonetaryAmountType.class)
     private MonetaryAmount price;
+
+    @OneToMany(mappedBy = "Transaction")
+    private Set<Account> involvedAccounts;
 }

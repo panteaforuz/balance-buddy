@@ -33,6 +33,9 @@ public class Asset extends BaseEntity {
     @CompositeType(MonetaryAmountType.class)
     private MonetaryAmount money;
 
+    @Column(name = "CARD_NUMBER")
+    private String cardNumber;
+
     @Column(name = "is_Default")
     private boolean isDefault;
 }

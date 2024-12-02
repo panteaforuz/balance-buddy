@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import me.balancebuddy.base.BaseEntity;
 
+import java.util.List;
 import java.util.Set;
 
 
@@ -22,10 +23,13 @@ public class Account extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "account_number", unique = true, nullable = false)
-    private String accountNumber;
+    @Column(name = "username", unique = true, nullable = false)
+    private String username;
 
-    @OneToMany(mappedBy = "account")
-    private Set<UserAccount> userAccounts;
+    @Column(name = "phone_number", unique = true, nullable = false)
+    private String phoneNumber;
+
+    @OneToMany(mappedBy = "Account")
+    private List<Asset> assets;
 
 }

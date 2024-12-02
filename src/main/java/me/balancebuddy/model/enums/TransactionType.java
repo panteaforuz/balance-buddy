@@ -2,5 +2,8 @@ package me.balancebuddy.model.enums;
 
 public enum TransactionType {
     WITHDRAW,
-    DEPOSIT
+    DEPOSIT,
+    TRANSFORM,
+    SETTLEUP
 }
+
