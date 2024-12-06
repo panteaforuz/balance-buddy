@@ -4,6 +4,7 @@ public enum TransactionType {
     WITHDRAW,
     DEPOSIT,
     TRANSFORM,
-    SETTLEUP
+    SETTLEUP,
+    GROUPCOST
 }
 

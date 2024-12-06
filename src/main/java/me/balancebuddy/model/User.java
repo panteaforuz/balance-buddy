@@ -13,8 +13,8 @@ import java.util.List;
 @AllArgsConstructor
 @Setter
 @Getter
-@Table(name = "ACCOUNTS")
-public class Account extends BaseEntity {
+@Table(name = "USER")
+public class User extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

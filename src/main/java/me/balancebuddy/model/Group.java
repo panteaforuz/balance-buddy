@@ -13,7 +13,7 @@ import java.util.Set;
 @AllArgsConstructor
 @Setter
 @Getter
-@Table(name = "TRANSACTION")
+@Table(name = "GROUP")
 public class Group {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,5 +21,5 @@ public class Group {
     private Long id;
 
     @OneToMany(mappedBy = "Group")
-    private Set<Account> accounts;
+    private Set<User> users;
 }

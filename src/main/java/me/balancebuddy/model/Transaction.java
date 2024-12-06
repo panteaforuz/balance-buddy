@@ -26,12 +26,12 @@ public class Transaction extends BaseEntity {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "SOURSE_ACCOUNT_ID")
-    private Account sourceAccount;
+    @JoinColumn(name = "SENDER_ID")
+    private User sender;
 
     @ManyToOne
-    @JoinColumn(name = "DESTINATION_ACCOUNT_ID")
-    private Account destinationAccount;
+    @JoinColumn(name = "RECEIVER_ID")
+    private User receiver;
 
     @Column(name = "ORIGIN_CARD_NUMBER")
     private String originCardNumber;
@@ -42,8 +42,9 @@ public class Transaction extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private TransactionType transactionType;
 
-    @Enumerated(EnumType.STRING)
-    private TransmissionType transmissionType;
+    @ManyToOne
+    @JoinColumn(name = "TRANSACTION_ID")
+    private Transaction relatedTransaction;
 
     @AttributeOverride(
             name = "AMOUNT",
@@ -56,6 +57,6 @@ public class Transaction extends BaseEntity {
     @CompositeType(MonetaryAmountType.class)
     private MonetaryAmount price;
 
-    @OneToMany(mappedBy = "Transaction")
-    private Set<Account> involvedAccounts;
+    @OneToMany(mappedBy = "User")
+    private Set<User> involvedUsers;
 }
