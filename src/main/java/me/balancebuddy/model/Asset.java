@@ -38,4 +38,7 @@ public class Asset extends BaseEntity {
 
     @Column(name = "is_Default")
     private boolean isDefault;
+
+    @ManyToOne
+    private User user;
 }

@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import me.balancebuddy.base.BaseEntity;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @NoArgsConstructor
@@ -26,7 +27,12 @@ public class User extends BaseEntity {
     @Column(name = "phone_number", unique = true, nullable = false)
     private String phoneNumber;
 
-    @OneToMany(mappedBy = "Account")
+    @OneToMany(mappedBy = "user")
     private List<Asset> assets;
+
+    @ManyToMany(mappedBy = "users")
+    private Set<Group> groups;
+
+
 
 }

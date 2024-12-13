@@ -1,25 +1,33 @@
 package me.balancebuddy.model;
 
+
+import ch.qos.logback.core.model.NamedModel;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Set;
-
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Setter
 @Getter
-@Table(name = "GROUP")
-public class Group {
+@Table(name = "GROUP_TRANSACTION_USERS")
+public class GroupTransactionUsers {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @ManyToMany
-    private Set<User> users;
+    @ManyToOne
+    private Transaction transaction;
+
+    @ManyToOne
+    @JoinColumn(name = "INVOLVED_USER_ID")
+    private User user;
+
+    @ManyToOne
+    private Group group;
+
 }

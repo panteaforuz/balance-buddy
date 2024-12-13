@@ -26,11 +26,9 @@ public class Transaction extends BaseEntity {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "SENDER_ID")
     private User sender;
 
     @ManyToOne
-    @JoinColumn(name = "RECEIVER_ID")
     private User receiver;
 
     @Column(name = "ORIGIN_CARD_NUMBER")
@@ -43,7 +41,6 @@ public class Transaction extends BaseEntity {
     private TransactionType transactionType;
 
     @ManyToOne
-    @JoinColumn(name = "TRANSACTION_ID")
     private Transaction relatedTransaction;
 
     @AttributeOverride(
@@ -56,7 +53,4 @@ public class Transaction extends BaseEntity {
     )
     @CompositeType(MonetaryAmountType.class)
     private MonetaryAmount price;
-
-    @OneToMany(mappedBy = "User")
-    private Set<User> involvedUsers;
 }
